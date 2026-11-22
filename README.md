@@ -86,5 +86,6 @@ El seguimiento se mantiene durante la sesión de la aplicación. El historial ag
 Proyecto desarrollado en conjunto por cuatro estudiantes de la Escuela Politécnica Nacional.
 
 - [Pablo Pacheco](https://github.com/lpachecol)
-
-Quedan por añadir los nombres y perfiles de los otros tres integrantes.
+- [César Zapata](https://github.com/Cesarbmm)
+- [Christian Ayala](https://github.com/Handresth404)
+- [Jhonn Saeteros](https://github.com/JASL22)
