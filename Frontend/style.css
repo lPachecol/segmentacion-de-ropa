@@ -1,0 +1,762 @@
+/* ========================================
+   VARIABLES CSS
+   ======================================== */
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --danger-color: #dc2626;
+    --success-color: #16a34a;
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #e2e8f0;
+    --border-color: #475569;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   ESTILOS GENERALES
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-bottom: 2px solid var(--border-color);
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+header .subtitle {
+    color: var(--text-primary);
+    font-size: 1.1em;
+}
+
+/* ========================================
+   CONTENIDO PRINCIPAL
+   ======================================== */
+.content {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 20px;
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1024px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   PANEL DE CONTROL
+   ======================================== */
+.control-panel {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-group label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95em;
+}
+
+.control-group input[type="text"],
+.control-group input[type="range"] {
+    padding: 10px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.95em;
+}
+
+.control-group input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.control-group input[type="range"] {
+    cursor: pointer;
+    height: 6px;
+    padding: 0;
+}
+
+#fpsValue {
+    text-align: center;
+    background: var(--bg-tertiary);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* ========================================
+   BOTONES
+   ======================================== */
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-danger {
+    background: var(--danger-color);
+    color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background: #b91c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(220, 38, 38, 0.3);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ========================================
+   INFORMACIÓN DE ESTADO
+   ======================================== */
+.status-info {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.status-item:last-child {
+    border-bottom: none;
+}
+
+.status-item .label {
+    color: var(--text-primary);
+    font-size: 0.9em;
+}
+
+.status-text {
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.status-text.status-connected {
+    background: rgba(22, 163, 74, 0.2);
+    color: #4ade80;
+}
+
+.status-text.status-disconnected {
+    background: rgba(220, 38, 38, 0.2);
+    color: #ef4444;
+}
+
+.status-text.status-processing {
+    background: rgba(37, 99, 235, 0.2);
+    color: #60a5fa;
+}
+
+.status-value {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* ========================================
+   LOGS
+   ======================================== */
+.logs-container {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.logs-container h3 {
+    font-size: 0.95em;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.logs {
+    flex: 1;
+    overflow-y: auto;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 0.85em;
+    font-family: 'Courier New', monospace;
+    color: var(--text-primary);
+}
+
+    /* Prendas extraídas */
+    .garments-container {
+        margin-top: 20px;
+    }
+
+    .garments-results {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+        margin-top: 8px;
+    }
+
+    .garment-card {
+        background: #0f172a;
+        color: #e2e8f0;
+        border: 1px solid #1e293b;
+        border-radius: 10px;
+        padding: 12px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .garment-card h4 {
+        margin: 0 0 8px 0;
+    }
+
+    .mask-classes {
+        font-size: 12px;
+        color: #94a3b8;
+        margin: 0 0 8px 0;
+    }
+
+    .garment-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin: 6px 0;
+        padding: 6px 8px;
+        background: #1e293b;
+        border-radius: 8px;
+    }
+
+    .garment-item img {
+        max-width: 96px;
+        border-radius: 6px;
+        border: 1px solid #334155;
+        background: #0b1220;
+    }
+
+    .color-info {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-left: auto;
+        font-size: 12px;
+        color: #e2e8f0;
+    }
+
+    .color-swatch {
+        width: 18px;
+        height: 18px;
+        border-radius: 4px;
+        border: 1px solid #0f172a;
+        box-shadow: 0 0 0 1px #334155;
+    }
+
+    .garment-item .missing {
+        color: #f87171;
+        font-size: 12px;
+    }
+
+    .garment-card.empty {
+        text-align: center;
+        color: #94a3b8;
+    }
+
+.log-entry {
+    margin-bottom: 8px;
+    padding: 5px;
+    border-left: 3px solid var(--text-secondary);
+    padding-left: 10px;
+}
+
+.log-entry.error {
+    border-left-color: var(--danger-color);
+    color: #fca5a5;
+}
+
+.log-entry.success {
+    border-left-color: var(--success-color);
+    color: #86efac;
+}
+
+.log-entry.info {
+    border-left-color: var(--primary-color);
+    color: #93c5fd;
+}
+
+/* ========================================
+   PANEL DE VISUALIZACIÓN
+   ======================================== */
+.visualization-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .visualization-panel {
+        grid-template-columns: 1fr;
+    }
+}
+
+.video-container,
+.canvas-container {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.video-container h3,
+.canvas-container h3 {
+    font-size: 1.1em;
+    margin: 0;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+video,
+canvas,
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    max-height: 500px;
+    object-fit: contain;
+    background: var(--bg-primary);
+}
+
+.no-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    background: var(--bg-tertiary);
+    border: 2px dashed var(--border-color);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.no-image p {
+    font-size: 1.1em;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 2px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+/* ========================================
+   ESTILOS PARA HISTORIAL
+   ======================================== */
+.history-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: #0f172a;
+}
+
+.history-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #cbd5e1;
+    color: #0f172a;
+}
+
+.header-info {
+    flex: 1;
+    color: #0f172a;
+}
+
+.header-info h3 {
+    color: #0f172a;
+    font-size: 1.3em;
+    margin-bottom: 8px;
+}
+
+.folder-path {
+    background: #e2e8f0;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: #0f172a;
+    font-size: 0.85em;
+    word-break: break-all;
+    margin-bottom: 8px;
+    font-family: 'Courier New', monospace;
+}
+
+.history-date {
+    color: #0f172a;
+    font-size: 0.9em;
+}
+
+.history-segmented-section {
+    margin: 20px 0;
+    padding: 15px;
+    background: #eef2ff;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+    color: #0f172a;
+}
+
+.history-segmented-section h4 {
+    color: #0f172a;
+    margin-bottom: 12px;
+    font-size: 1em;
+}
+
+.segmented-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #000000;
+    border-radius: 4px;
+}
+
+.history-image {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.history-image:hover {
+    transform: scale(1.05);
+}
+
+.history-garments-section {
+    margin-top: 20px;
+    color: #0f172a;
+}
+
+.history-garments-section h4 {
+    color: #0f172a;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+.garments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1300px, 1fr));
+    gap: 22px;
+    color: #0f172a;
+}
+
+.garment-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 22px;
+    transition: all 0.2s;
+    color: #0f172a;
+    display: flex;
+    flex-direction: column;
+    min-height: 520px;
+    color: #0f172a;
+}
+
+.garment-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.15);
+}
+
+.garment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #0f172a;
+}
+
+.garment-header h5 {
+    color: #0f172a;
+    margin: 0;
+    font-size: 1em;
+}
+
+.color-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #0f172a;
+    display: inline-block;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.garment-details {
+    margin: 12px 0;
+    font-size: 1em;
+}
+
+.garment-details p {
+    margin: 6px 0;
+    color: #0f172a;
+}
+
+.garment-details strong {
+    color: #0f172a;
+}
+
+.garment-details code {
+    background: #e2e8f0;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    color: #0f172a;
+    /* Show long routes on one line with horizontal scroll */
+    white-space: nowrap;
+    overflow-x: auto;
+    max-width: 100%;
+    /* Keep vertical scroll for multi-line fallback */
+    word-break: normal;
+    display: block;
+    margin-top: 4px;
+    max-height: 60px;
+    overflow-y: auto;
+    line-height: 1.3;
+}
+
+.garment-image-wrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e2e8f0;
+    border-radius: 6px;
+    border: 2px dashed #cbd5e1;
+    padding: 6px;
+    width: 100%;
+    min-height: 520px;
+    max-height: 520px;
+}
+
+.garment-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.garment-image:hover {
+    transform: scale(1.1);
+}
+
+/* Copy button for paths */
+.copy-btn {
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.85em;
+    cursor: pointer;
+}
+
+.copy-btn:hover {
+    background: var(--secondary-color);
+}
+
+.segmented-controls {
+    margin-top: 10px;
+}
+
+.segmented-controls code {
+    background: #e2e8f0;
+    padding: 6px 10px;
+    border-radius: 4px;
+    color: #0f172a;
+    font-size: 0.95em;
+}
+
+/* ========================================
+   SCROLLBAR PERSONALIZADO
+   ======================================== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* Selección de texto más agradable */
+::selection {
+    background: rgba(37, 99, 235, 0.35);
+    color: var(--text-primary);
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.processing {
+    animation: pulse 1s infinite;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .visualization-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .control-panel {
+        order: 2;
+    }
+
+    video,
+    canvas,
+    img {
+        max-height: 300px;
+    }
+}
